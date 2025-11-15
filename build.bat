@@ -1,9 +1,21 @@
 @echo off
 setlocal
 
-rem === Format is activated ===
-echo [INFO] Formating
-clang-format -i src/bin/main.c
+rem === Folder resources ===
+set C_SRC=src\bin
+set H_SRC=include
+
+rem === Format .c file is activated ===
+for %%f in (%C_SRC%\*.c) do (
+    echo [INFO] Formatting %%f
+    clang-format -i "%%f"
+)
+
+rem === Format .h file is activated ===
+for %%f in (%H_SRC%\*.h) do (
+    echo [INFO] Formatting %%f
+    clang-format -i "%%f"
+)
 
 rem === Check if the build folder exists ===
 if not exist build (
