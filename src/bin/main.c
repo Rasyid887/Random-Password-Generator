@@ -6,6 +6,7 @@
 void init_random();
 int generate_random(int min, int max);
 char *generate_password(int lenght, const char *symbol_1, const char *symbol_2, const char *symbol_3, const char *symbol_4);
+void fisher_yates(int lenght, char *array);
 
 int main() {
     const char *uppercase_symbol = "QZJCLYMTBSAHVGFKIPRODWXNEU";
@@ -25,6 +26,17 @@ int main() {
     password = NULL;
 
     return 0;
+}
+
+void fisher_yates(int lenght, char *array) {
+    for (int i = lenght - 1; i > 0; i--)
+    {
+        int j = rand() % (i + 1);
+
+        char temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+    }
 }
 
 char *generate_password(int lenght, const char *symbol_1, const char *symbol_2, const char *symbol_3, const char *symbol_4) {
@@ -55,6 +67,8 @@ char *generate_password(int lenght, const char *symbol_1, const char *symbol_2, 
     }
 
     password[lenght] = '\0';
+
+    fisher_yates(strlen(password), password);
     
     return password;
 }
