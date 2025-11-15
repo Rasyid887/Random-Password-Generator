@@ -1,3 +1,4 @@
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -11,20 +12,66 @@ void  fisher_yates(int lenght, char *array);
 int main() {
     const char *uppercase_symbol = "QZJCLYMTBSAHVGFKIPRODWXNEU";
     const char *lowercase_symbol = "qjntvexyzlsckmrgabwhipdfou";
-    const char *special_symbol   = "!@#$^&*()";
+    const char *special_symbol   = "!@#$^&*";
     const char *number_symbol    = "0123456789";
+
+    bool isExit    = false;
+    bool isReset   = false;
+    bool isContain = false;
+    char response  = '\0';
+    char data[50];
 
     init_random();
 
-    int data = generate_random(1, 25);
+    while (!isExit) {
+        puts("\n=========================================");
+        puts("======= RANDOM PASSWORD GENERATOR =======");
+        puts("=========================================\n");
 
-    char *password = generate_password(12, uppercase_symbol, lowercase_symbol, special_symbol, number_symbol);
+        do {
+            printf("What is an interesting? ");
+            fgets(data, sizeof(data), stdin);
+            data[strlen(data) - 1] = '\0';
 
-    printf("test: %s\n", password);
+            if (strchr(data, ' ') != NULL) {
+                puts("[ERROR] Data contains spaces\n");
+                isContain = true;
+            } else {
+                isContain = false;
+            }
+        } while (isContain);
 
-    free(password);
-    password = NULL;
+        char *password = generate_password(12, uppercase_symbol, lowercase_symbol, special_symbol, number_symbol);
 
+        printf("Password: %s_%s\n", data, password);
+
+        free(password);
+        password = NULL;
+
+        do {
+            printf("\nWould you want to reset your password? (Y/N) ");
+            scanf(" %c", &response);
+            getchar();
+
+            if (response == 'Y' || response == 'y') {
+                isReset = false;
+                isExit  = false;
+            } else if (response == 'N' || response == 'n') {
+                isReset = false;
+                isExit  = true;
+
+                puts("Thankyou for using the program!");
+                puts("=========================================");
+            } else {
+                isReset = true;
+                isExit  = false;
+
+                puts("\n[ERROR] Invalid response");
+            }
+        } while (isReset);
+    }
+
+    getchar();
     return 0;
 }
 
@@ -47,16 +94,16 @@ char *generate_password(int lenght, const char *symbol_1, const char *symbol_2, 
     }
 
     for (int i = 0; i < group_lenght; i++) {
-        password[i] = symbol_1[generate_random(1, 25)];
+        password[i] = symbol_1[generate_random(0, 25)];
     }
     for (int i = group_lenght; i < group_lenght * 2; i++) {
-        password[i] = symbol_2[generate_random(1, 25)];
+        password[i] = symbol_2[generate_random(0, 25)];
     }
     for (int i = group_lenght * 2; i < group_lenght * 3; i++) {
-        password[i] = symbol_3[generate_random(1, 8)];
+        password[i] = symbol_3[generate_random(0, 6)];
     }
     for (int i = group_lenght * 3; i < group_lenght * 4; i++) {
-        password[i] = symbol_4[generate_random(1, 9)];
+        password[i] = symbol_4[generate_random(0, 9)];
     }
 
     password[lenght] = '\0';
