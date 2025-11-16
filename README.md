@@ -37,9 +37,9 @@ main.exe
 
 ## Example
 
-![alt text](Screenshot1.png)
+![alt text](docs/Screenshot1.png)
 
-![alt text](Screenshot2.png)
+![alt text](docs/Screenshot2.png)
 
 ## Contributing
 
