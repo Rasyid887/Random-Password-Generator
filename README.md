@@ -9,6 +9,12 @@ A simple and flexible command-line tool for generating secure random passwords w
 - Simple and fast command-line workflow.
 - Clean and modular project structure using `.c` and `.h` files.
 
+## Requirements
+To build the program from source on Windows, you must have these three tools installed:
+- C Compiler (GCC via MinGW)
+- CMake
+- Clang-Format
+
 ## Installation
 Clone the repository:
 
