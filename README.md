@@ -1,6 +1,6 @@
 # Random Password Generator 
 
-A simple and flexible command-line tool for generating secure random passwords. This project provides customizable password generation with support for user-selected input sentences, making it suitable for everyday use.
+A simple and flexible command-line tool for generating secure random passwords with a fixed length. This project provides customizable password generation with support for user-selected input sentences, making it suitable for everyday use.
 
 ## Features
 - Generate secure random passwords.
@@ -10,20 +10,36 @@ A simple and flexible command-line tool for generating secure random passwords. 
 - Clean and modular project structure using `.c` and `.h` files.
 
 ## Installation
-Clone the repository and build the project:
+Clone the repository:
 
 ```bash
-git clone https://github.com/your-username/random-password-generator.git
-cd random-password-generator
+git clone https://github.com/Rasyid887/Random-Password-Generator.git
+cd Random-Password-Generator
+```
+
+Build the project:
+```bash
 build
 ```
 
+The script will automatically:
+- configure the project using CMake,
+- compile the source code,
+- create the build/ directory (if it doesn't exist),
+- and move into the build folder where the final executable is located.
+
 ## Usage
-Run the password generator:
+After the build script finishes, run the program:
 
 ```bash
 main.exe
 ```
+
+## Example
+
+![alt text](Screenshot1.png)
+
+![alt text](Screenshot2.png)
 
 ## Contributing
 
