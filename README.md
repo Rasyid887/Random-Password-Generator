@@ -49,5 +49,4 @@ main.exe
 
 ## Contributing
 
-Contributions, suggestions, and improvements are welcome.
-Feel free to open issues or submit pull requests.
+Contributions, suggestions, and improvements are welcome. I'm not sure if I'll accept them, but please feel free to open an issue or submit a pull request.
